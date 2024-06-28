@@ -12,7 +12,8 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 
-const swaggerDefinition = {
+const options = {
+  definition: {
     openapi: "3.0.0",
     info: {
       title: "Toko Online API",
@@ -21,27 +22,28 @@ const swaggerDefinition = {
       license: {
         name: "MIT",
         url: "https://spdx.org/licenses/MIT.html",
-      }
+      },
     },
     servers: [
       {
-        url: "http://localhost:3000/",
+        url: "http://localhost:3000",
       },
     ],
-  };
+  },
+  apis: ["src/routes/*.js"]
+};
 
-
-const swaggerSpec = swaggerJsdoc({swaggerDefinition, apis: ['./Routers/*.js'] });
+const specs = swaggerJsdoc(options);
 
 app.use(
   "/api-docs",
   swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec)
+  swaggerUi.setup(specs)
 );
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT 
+const PORT = 3000
 
 const startServer = async () => {
   try {

@@ -55,15 +55,14 @@ const router = express.Router();
  *           format: date-time
  *           description: The last update date of the product
  *       example:
- *         id: d5fE_asz
+ * 
  *         name: Sample Product
  *         description: This is a sample product
  *         category: Sample Category
  *         price: 99.99
  *         imageUrl: http://example.com/image.jpg
  *         stock: In Stock
- *         createdAt: 2021-06-21T19:53:18Z
- *         updatedAt: 2021-06-21T19:53:18Z
+ *         
  */
 
 /**
@@ -159,6 +158,7 @@ router.post('/', addProduct);
  *         application/json:
  *           schema:
  *             $ref: '#/components/schemas/Product'
+ *             
  *     responses:
  *       200:
  *         description: The product was updated
