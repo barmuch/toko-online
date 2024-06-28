@@ -43,8 +43,6 @@ app.use(
 
 app.use(errorHandler);
 
-const PORT = 3000
-
 const startServer = async () => {
   try {
     await prisma.$connect();
